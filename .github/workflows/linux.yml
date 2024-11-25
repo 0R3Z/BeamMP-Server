@@ -5,6 +5,7 @@ on:
     branches:
       - 'develop'
       - 'minor'
+      - 'test/actions'
   pull_request:
 
 env: 
