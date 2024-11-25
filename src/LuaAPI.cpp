@@ -173,7 +173,7 @@ std::pair<bool, std::string> LuaAPI::MP::DropPlayer(int ID, std::optional<std::s
     return { true, "" };
 }
 
-std::pair<bool, std::string> LuaAPI::MP::SendChatMessage(int ID, const std::string& Message, const std::string& Prefix = "") {
+std::pair<bool, std::string> LuaAPI::MP::SendChatMessage(int ID, const std::string& Message, const std::string& Prefix) {
     std::string Sender = Prefix.empty() ? "Server" : Prefix;
     std::pair<bool, std::string> Result;
     std::string Packet = "C:" + Sender + ": " + Message;
