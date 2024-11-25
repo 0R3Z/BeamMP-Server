@@ -496,7 +496,7 @@ void TConsole::Command_Settings(const std::string&, const std::vector<std::strin
 void TConsole::Command_Say(const std::string& FullCmd) {
     if (FullCmd.size() > 3) {
         auto Message = FullCmd.substr(4);
-        LuaAPI::MP::SendChatMessage(-1, Message,nullptr);
+        LuaAPI::MP::SendChatMessage(-1, Message);
         if (!Application::Settings.getAsBool(Settings::Key::General_LogChat)) {
             Application::Console().WriteRaw("Chat message sent!");
         }
