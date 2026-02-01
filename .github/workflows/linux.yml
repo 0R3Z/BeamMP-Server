@@ -3,11 +3,11 @@ name: Linux
 on:
   push:
     branches:
-      - 'develop'
-      - 'minor'
+      - "develop"
+      - "minor"
   pull_request:
 
-env: 
+env:
   VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
   VCPKG_FORCE_SYSTEM_BINARIES: 1
   CMAKE_BUILD_TYPE: "Release"
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: get-cmake
         uses: lukka/get-cmake@v3.28.1
-            
+
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -45,7 +45,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: "recursive"
           fetch-depth: 0
 
       - name: Git config safe directory
@@ -84,8 +84,6 @@ jobs:
 
   arm64-matrix:
     runs-on: ubuntu-22.04-arm
-    env:
-      VCPKG_DEFAULT_TRIPLET: "arm64-linux"
     strategy:
       matrix:
         include:
@@ -100,7 +98,7 @@ jobs:
     steps:
       - name: get-cmake
         uses: lukka/get-cmake@v3.28.1
-            
+
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v6
         with:
@@ -115,7 +113,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: "recursive"
           fetch-depth: 0
 
       - name: Git config safe directory
@@ -151,4 +149,3 @@ jobs:
 
       - name: Test
         run: ./bin/BeamMP-Server-tests
-
