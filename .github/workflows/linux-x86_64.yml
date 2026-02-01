@@ -2,10 +2,36 @@ name: Linux x86_64
 
 on:
   push:
-    branches:
-      - "develop"
-      - "minor"
+    paths:
+      - "deps/**"
+      - "vcpkg.json"
+      - "vcpkg/**"
+      - "include/**"
+      - "src/**"
+      - "test/**"
+      - "scripts/**"
+      - "cmake/**"
+      - "**/CMakeLists.txt"
+      - "**/*.c"
+      - "**/*.cpp"
+      - "**/*.h"
+      - "**/*.hpp"
   pull_request:
+    types: [opened, reopened, synchronize, review_requested, ready_for_review]
+    paths:
+      - "deps/**"
+      - "vcpkg.json"
+      - "vcpkg/**"
+      - "include/**"
+      - "src/**"
+      - "test/**"
+      - "scripts/**"
+      - "cmake/**"
+      - "**/CMakeLists.txt"
+      - "**/*.c"
+      - "**/*.cpp"
+      - "**/*.h"
+      - "**/*.hpp"
   workflow_dispatch:
 
 env:
@@ -67,13 +93,13 @@ jobs:
       - name: Archive server artifact
         uses: actions/upload-artifact@v4
         with:
-          name: BeamMP-Server.${{ matrix.distro }}.${{ matrix.version }}.x86_64
+          name: BeamMP-Server.${{ matrix.distro }}.${{ matrix.version }}.x86_64.${{ github.sha }}
           path: ./bin/BeamMP-Server
 
       - name: Archive server debug info artifact
         uses: actions/upload-artifact@v4
         with:
-          name: debuginfo.${{ matrix.distro }}.${{ matrix.version }}.x86_64
+          name: debuginfo.${{ matrix.distro }}.${{ matrix.version }}.x86_64.${{ github.sha }}
           path: ./bin/BeamMP-Server.debug
 
       - name: Build Tests
